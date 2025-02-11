@@ -1,6 +1,6 @@
 # 🐾 Pet App
 
-A minimalist, full-stack pet management application built with **Angular**, **.NET 8**, and **PostgreSQL**. This project follows a clean, simple UI design using **Bootstrap** with a blue/gray theme.
+A minimalist, full-stack pet management application built with **Angular**, **.NET 8**, and **PostgreSQL**. This project follows a clean, simple UI design using **Bootstrap** with a blue/gray theme. This project is meant to showcase containerization of a typical 3 tier application and is comprised of containers for each tier, one each for the database, api, and ui. 
 
 ## 🚀 Features
 - 📝 **List Pets** – View all available pets with details.
