@@ -1,0 +1,57 @@
+# Node.js dependencies
+ui/node_modules/
+ui/package-lock.json
+ui/.angular/
+ui/.vscode/
+ui/.editorconfig
+ui/dist/
+ui/tmp/
+ui/.sass-cache/
+
+# Angular-specific
+ui/src/styles.css
+ui/src/styles.scss.map
+ui/src/app/*.css
+ui/src/app/*.css.map
+ui/src/app/*.scss.map
+
+# Environment files
+ui/.env
+ui/.env.local
+ui/.env.*.local
+
+# Logs
+ui/npm-debug.log*
+ui/yarn-debug.log*
+ui/yarn-error.log*
+ui/pnpm-debug.log*
+
+# MacOS system files
+.DS_Store
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# .NET dependencies
+api/bin/
+api/obj/
+api/*.user
+api/*.suo
+api/*.vs
+api/*.vscode
+api/appsettings.*.json
+
+# PostgreSQL database files
+db/*.pgdata
+db/*.sql
+
+# Nginx config (if generated dynamically)
+ui/nginx.conf
+
+# Ignore built frontend files if they're built before deployment
+ui/build/
+ui/src/**/*.map
+
+# Git exclusions
+!.gitignore

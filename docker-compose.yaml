@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: pet-db
+    restart: always
+    environment:
+      POSTGRES_DB: PetDB
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - pet-db-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "admin", "-d", "PetDB"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: pet-api
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy  # ✅ API waits for DB to be ready
+    environment:
+      DATABASE_URL: "Host=db;Port=5432;Database=PetDB;Username=admin;Password=admin"
+    ports:
+      - "5001:8080"
+
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: pet-ui
+    restart: always
+    depends_on:
+      - api  # ✅ UI waits for API to be ready
+    ports:
+      - "80:80"  # ✅ UI exposed on port 80
+    volumes:
+      - ./ui/nginx.conf:/etc/nginx/nginx.conf:ro  # ✅ Ensure custom Nginx config is used      
+
+volumes:
+  pet-db-data:

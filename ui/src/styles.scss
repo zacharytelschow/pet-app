@@ -1,0 +1,73 @@
+// Import Bootstrap (if not already included)
+@use "bootstrap/scss/bootstrap";
+
+// Theme Colors
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$background-color: #f8f9fa;
+$text-color: #333;
+
+// Global styles
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+h1, h2 {
+  font-weight: 600;
+  color: $primary-color;
+}
+
+// Bootstrap Button Overrides
+.btn-primary {
+  background-color: $primary-color;
+  border: none;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.btn-outline-secondary {
+  border-color: $secondary-color;
+  color: $secondary-color;
+
+  &:hover {
+    background-color: lighten($secondary-color, 30%);
+    color: white;
+  }
+}
+
+// Cards & Containers
+.card {
+  background: white;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 600px;
+}
+
+// List Items
+.list-group-item {
+  border: none;
+  padding: 12px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: lighten($background-color, 5%);
+  }
+}
+
+// Links
+a {
+  text-decoration: none;
+  color: $primary-color;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
