@@ -44,7 +44,6 @@ api/appsettings.*.json
 
 # PostgreSQL database files
 db/*.pgdata
-db/*.sql
 
 # Ignore built frontend files if they're built before deployment
 ui/build/
