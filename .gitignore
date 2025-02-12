@@ -46,9 +46,6 @@ api/appsettings.*.json
 db/*.pgdata
 db/*.sql
 
-# Nginx config (if generated dynamically)
-ui/nginx.conf
-
 # Ignore built frontend files if they're built before deployment
 ui/build/
 ui/src/**/*.map
