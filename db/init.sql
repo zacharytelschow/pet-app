@@ -1,3 +1,7 @@
+-- these 2 lines are needed windows
+CREATE DATABASE PetDB;
+\c PetDB;
+
 -- Ensure Pets table exists with correct casing
 CREATE TABLE IF NOT EXISTS "Pets" (
     "Id" SERIAL PRIMARY KEY,
