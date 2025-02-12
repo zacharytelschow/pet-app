@@ -1,31 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // ✅ Import RouterModule
+import { RouterModule } from '@angular/router';
 import { PetService, Pet } from '../services/pet.service';
 
 @Component({
   selector: 'app-pet-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule], // ✅ Add RouterModule here
+  imports: [CommonModule, RouterModule],
   template: `
-  <div class="container mt-4">
-  <div class="card p-4">
-    <h2>{{ pet?.name }} Details</h2>
-    <p><strong>Type:</strong> {{ pet?.type }}</p>
-    <p><strong>Age:</strong> {{ pet?.age }} years old</p>
-    <div class="d-flex gap-2">
-      <a routerLink="/" class="btn btn-outline-secondary">⬅️ Back to Pet List</a>
-      <a [routerLink]="['/edit-pet', pet?.id]" class="btn btn-warning">✏️ Edit Pet</a>
+    <div class="container mt-5 d-flex justify-content-center">
+      <div class="card shadow-lg p-4" style="max-width: 500px; width: 100%;">
+        <h2 class="text-primary text-center">{{ pet?.name }} Details</h2>
+        <hr />
+        <p><strong>Type:</strong> {{ pet?.type }}</p>
+        <p><strong>Age:</strong> {{ pet?.age }} years old</p>
+        <div class="d-flex justify-content-between mt-4">
+          <a routerLink="/" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Pet List
+          </a>
+          <a [routerLink]="['/edit-pet', pet?.id]" class="btn btn-warning">
+            <i class="fas fa-edit"></i> Edit Pet
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-
   `,
   styles: [
-    'h2 { color: #007bff; }',
-    'button { background: #28a745; color: white; border: none; padding: 8px; cursor: pointer; margin-top: 10px; }'
+    `
+      .card {
+        background: #f8f9fa;
+        border-radius: 10px;
+      }
+      h2 {
+        font-weight: bold;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+    `
   ]
 })
 export class PetDetailComponent implements OnInit {

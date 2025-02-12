@@ -9,39 +9,55 @@ import { PetService, Pet } from '../services/pet.service';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule], // ✅ Import necessary modules
   template: `
-    <h2>{{ isEditMode ? 'Edit Pet' : 'Add Pet' }}</h2>
-    
-    <form (ngSubmit)="savePet()">
-      <label>
-        Name:
-        <input type="text" [(ngModel)]="pet.name" name="name" required />
-      </label>
-      <br />
+    <div class="container">
+      <h2 class="text-primary">{{ isEditMode ? 'Edit Pet' : 'Add a New Pet' }}</h2>
+      
+      <form (ngSubmit)="savePet()" class="form">
+        <div class="mb-3">
+          <label class="form-label">Name:</label>
+          <input class="form-control" type="text" [(ngModel)]="pet.name" name="name" required />
+        </div>
 
-      <label>
-        Type:
-        <input type="text" [(ngModel)]="pet.type" name="type" required />
-      </label>
-      <br />
+        <div class="mb-3">
+          <label class="form-label">Type:</label>
+          <input class="form-control" type="text" [(ngModel)]="pet.type" name="type" required />
+        </div>
 
-      <label>
-        Age:
-        <input type="number" [(ngModel)]="pet.age" name="age" required />
-      </label>
-      <br />
+        <div class="mb-3">
+          <label class="form-label">Age:</label>
+          <input class="form-control" type="number" [(ngModel)]="pet.age" name="age" required />
+        </div>
 
-      <button type="submit">{{ isEditMode ? 'Update' : 'Add' }} Pet</button>
-    </form>
-
-    <br />
-    <a routerLink="/">⬅️ Back to Pet List</a>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> {{ isEditMode ? 'Update' : 'Add' }} Pet
+          </button>
+          <a routerLink="/" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back to Pet List
+          </a>
+        </div>
+      </form>
+    </div>
   `,
-  styles: [
-    `h2 { color: #007bff; }`,
-    `form { display: flex; flex-direction: column; gap: 8px; max-width: 300px; }`,
-    `input { padding: 6px; font-size: 16px; }`,
-    `button { background: #007bff; color: white; border: none; padding: 8px; cursor: pointer; }`
-  ]
+  styles: [`
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      font-weight: bold;
+    }
+    button {
+      min-width: 150px;
+    }
+  `]
 })
 export class PetFormComponent implements OnInit {
   pet: Pet = { id: 0, name: '', type: '', age: 0 };

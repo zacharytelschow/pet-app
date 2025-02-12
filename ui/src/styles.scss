@@ -1,5 +1,7 @@
 // Import Bootstrap (if not already included)
 @use "bootstrap/scss/bootstrap";
+@import "@fortawesome/fontawesome-free/css/all.css";
+
 
 // Theme Colors
 $primary-color: #007bff;
@@ -25,7 +27,7 @@ h1, h2 {
   border: none;
 
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: adjust-color($primary-color, $lightness: -10%);
   }
 }
 
@@ -34,7 +36,7 @@ h1, h2 {
   color: $secondary-color;
 
   &:hover {
-    background-color: lighten($secondary-color, 30%);
+    background-color: adjust-color($secondary-color, $lightness: 30%);
     color: white;
   }
 }
@@ -58,7 +60,7 @@ h1, h2 {
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: lighten($background-color, 5%);
+    background-color: adjust-color($background-color, $lightness: 5%);
   }
 }
 

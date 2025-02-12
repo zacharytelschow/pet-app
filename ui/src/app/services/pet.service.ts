@@ -29,5 +29,7 @@ export class PetService {
   updatePet(pet: Pet): Observable<void> {
     return this.http.put<void>(`${this.apiUrl}/${pet.id}`, pet);
   }
-  
+  deletePet(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }  
 }

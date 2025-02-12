@@ -15,7 +15,7 @@ services:
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "admin", "-d", "PetDB"]
       interval: 5s
-      timeout: 3s
+      timeout: 1s
       retries: 5
 
   api:
